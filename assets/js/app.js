@@ -4,32 +4,11 @@ ContactManager.addRegions({
     mainRegion: '#main-region'
 });
 
-ContactManager.Contact = Backbone.Model.extend({
-    defaults: {
-        phoneNumber: '+91-9999-xxx'
-    }
-});
-ContactManager.ContactCollection = Backbone.Collection.extend({
-    model: ContactManager.Contact
-    //comparator: "firstName"
-});
-
 ContactManager.on("start", function () {
-    var data = new ContactManager.ContactCollection([{
-            firstName: 'XYZ',
-            lastName: 'Globalmarket',
-            phoneNumber: '+91-997162xxxx'
-        }, {
-            firstName: 'Sapient-1',
-            lastName: 'Globalmarket-1'
-        }, {
-            firstName: 'Sapient-2',
-            lastName: 'Globalmarket-2',
-            phoneNumber: '+91-997162xxxx'
-        }]);
+   var contacts = ContactManager.request("contact:entities");
 
     var listView = new ContactManager.ContactsView({
-        collection: data
+        collection: contacts
     })
     ContactManager.mainRegion.show(listView);
 });

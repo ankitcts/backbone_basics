@@ -7,6 +7,9 @@ ContactManager.module("ContactsApp.List", function (List, ContactManager,
             var contactsListView = new List.Contacts({
                 collection: contacts
             });
+            contactsListView.on("childview:contact:delete", function (childView, model) {
+                contacts.remove(model);
+            });
 
             ContactManager.mainRegion.show(contactsListView);
         }

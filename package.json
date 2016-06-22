@@ -1,0 +1,14 @@
+{
+  "name": "bullsfirst",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "ws --port=4000"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.6",
+    "local-web-server": "^0.5.23",
+    "require": "^2.4.20",
+    "requirejs": "^2.2.0",
+    "ws": "^1.1.0"
+  }
+}

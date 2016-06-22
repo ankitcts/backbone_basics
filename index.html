@@ -22,7 +22,7 @@
         <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
     </div>
 
-    <script type="text/template" id="contact-template">
+    <script type="text/template" id="contact-list-item">
         <p>{{firstName}} {{lastName}} |  {{phoneNumber}}</p>
     </script>
 
@@ -33,41 +33,9 @@
     <script src="./assets/js/vendor/backbone.marionette.js"></script>
     <script src="./assets/js/vendor/handlebars.js"></script>
 
+    <script src="./assets/js/app.js"></script>
+
     <script type="text/javascript">
-        var ContactManager = new Marionette.Application();
-        
-        ContactManager.Contact = Backbone.Model.extend({
-            default:{
-                phoneNumber: '+91-9999-xxx'
-            }
-        });
-        
-        ContactManager.on("start",function(){
-            var data = new ContactManager.Contact({
-                firstName: 'Sapient',
-                lastName :'Globalmarket',
-                phoneNumber : '+91-997162xxxx'
-            });
-
-            var dataView  = new ContactManager.ContactView({
-                model:data
-            })            
-            ContactManager.mainRegion.show(dataView);
-        });
-        ContactManager.addRegions({
-          mainRegion: '#main-region' 
-        });
-        
-        ContactManager.ContactView = Marionette.ItemView.extend({
-            template: Handlebars.compile( $("#contact-template").html() ),
-            events : {
-                "click p":"_alertPhone"
-            },
-            _alertPhone : function(){
-                alert(this.model.get("phoneNumber"));
-            }
-        });
-
         ContactManager.start();
     </script>
 
